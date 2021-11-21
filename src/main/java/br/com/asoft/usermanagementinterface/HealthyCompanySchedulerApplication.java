@@ -8,7 +8,6 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,8 +25,8 @@ public class HealthyCompanySchedulerApplication extends SpringBootServletInitial
 		SpringApplication.run(HealthyCompanySchedulerApplication.class, args);
 	}
 
-	@Value("${database.url}")
-	private String databaseUrl;
+	@Value("${server.reference}")
+	private String serverReference;
 
 	@GetMapping(path = "/")
 	public String retornaPing() {
@@ -36,6 +35,6 @@ public class HealthyCompanySchedulerApplication extends SpringBootServletInitial
 
 	@GetMapping(path = "/ping")
 	public String ping() {
-		return "ok " + databaseUrl;
+		return "ok =>" + serverReference;
 	}
 }
